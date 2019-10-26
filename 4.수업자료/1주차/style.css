@@ -1,0 +1,53 @@
+.card-columns {
+	@include media-breakpoint-only(lg) {
+		column-count: 4;
+	}
+	@include media-breakpoint-only(xl) {
+		column-count: 5;
+	}
+}
+
+.form-total{width: 800px;
+	margin: 20px auto 20px auto;
+	padding: 20px;
+	border: solid;
+	border-color: black;
+	border-radius: 0.3rem;
+}
+.jumbotron{
+	width: 800px;
+	margin: 20px auto 20px auto;
+	padding: 20px;
+}
+.card-columns{
+	width: 800px;
+	margin: 20px auto 20px auto;
+	padding: 20px;
+	font-size: 15px;	
+}
+.mytitle{
+	color:#66CCCC;
+}
+.loginbox{
+	background-color: green;
+	width: 300px;
+	margin: 20px auto 20px auto ;
+	padding: 20px;
+}
+.card-text-comment{
+	color: blue;
+	font-size: 10px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.child {
+	line-height: 20px;
+	vertical-align: middle;
+}
+#posting-box {
+	display: none;
+}
+
