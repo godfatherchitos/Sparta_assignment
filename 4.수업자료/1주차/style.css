@@ -51,3 +51,12 @@
 	display: none;
 }
 
+.button{
+	position:fixed; 
+	bottom:24px; 
+	right:24px; 
+	width:150px; 
+	height:36px; 
+	background:#ddd; 
+	z-index:99
+}

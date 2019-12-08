@@ -42,6 +42,19 @@
         $("#btn-posting-box").text("포스팅박스닫기");
       }
     }
+    function openclsoe(){
+      if($("#psoting-box").css('display') == 'block'){
+        $("#posting-box").hide();
+        $("#btn-posting-box").text("포스팅박스열기");
+      }else {
+        $("#posting-box").show();
+        $("#btn-posting-box").text("포스팅박스닫기");
+      }
+
+      }
+    }
+
+
     $(document).ready(function(){
       $('#cards-box').html('');
       listing();

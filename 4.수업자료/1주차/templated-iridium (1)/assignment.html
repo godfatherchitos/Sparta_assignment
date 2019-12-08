@@ -20,17 +20,53 @@
 		function hey(){
 			alert('안녕!')
 		}
-	</script>
-	<noscript>
-		<link rel="stylesheet" href="css/skel-noscript.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/style-desktop.css" />
-	</noscript>
-	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		function openclose(){
+			if($('#DetailInfo').css('display') == 'block'){
+				$('#DetailInfo').hide()
+			}else{
+				$('#DetailInfo').show()
+			}
+		}
+		function posting() {
+			let UserName = $('#User_Name').val();
+			let UserOption = $('#User_option').val();
+			let UserAddress = $('#User_Address').val();
+			let UserPhone = $('#User_phonenumber').val();
+			alert(UserName + '/' + UserOption + "/" + UserAddress + "/" + UserPhone)
+		}
+		$.ajax({
+        type: "POST", // POST 방식으로 요청하겠다.
+        url: "http://spartacodingclub.shop/order", // /post라는 url에 요청하겠다.
+        data: { name_give: UserName, count_give: UserOption, address_give: UserAddress, phone_give : UserPhone}, // 데이터를 주는 방법
+        success: function(response){ // 성공하면
+        	if (response['result'] == 'success') {
+        		alert('포스팅 성공!');
+        		window.location.reload();
+        	} else {
+        		alert('서버 오류!')
+        	}
+        }
+        $(document).ready(function(){
+        	$('Orderlist').html('');
+        	listing();
+        })
+    })
 
+</script>
+<noscript>
+	<link rel="stylesheet" href="css/skel-noscript.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style-desktop.css" />
+</noscript>
+<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+
+<script src="jquery-3.4.1.min.js"></script>
+
+<!-- JQuery link-->
 </head>
 <body class="no-sidebar">
+
 
 	<!-- Header -->
 	<div id="header">
@@ -45,7 +81,7 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="active"><a href="index.html">Detail</a></li>
+					<li class="active"><a href="assignment.html">Detail</a></li>
 					<li><a href="left-sidebar.html">update</a></li>
 					<li><a href="right-sidebar.html">FAQ</a></li>
 				</ul>
@@ -57,6 +93,41 @@
 	<div id="main">
 		<div class="container">
 			<div class="row"> 
+				<div class = "order_button" >
+					<h2>Order</h2>
+					<button onclick="openclose()" type="button" class="btn btn-primary">Check out</button>
+					<form>
+						<div class="form-group" id="DetailInfo">    
+							<div class="col">
+								<label for="exampleInputPassword1">order name :</label>
+								<input id="User_Name" type="text" class="form-control" placeholder="First name">
+								<div class="col-auto my-1">
+									<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Quantity :</label>
+									<select id = "User_option" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected>Choose...</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+								<div class="col">
+									<label for="exampleInputPassword1">Address :</label>
+									<input id="User_Address" type="text" class="form-control" placeholder="Address">
+								</div>
+								<div class="col">
+									<label for="exampleInputPassword1">Phone number :</label>
+									<input id="User_phonenumber" type="text" class="form-control" placeholder="Phone number">
+								</div>
+
+								<button onclick = "posting()" type ="button" class="btn btn btn-primary0"> 
+									check out 
+								</button>
+							</div>
+						</div>
+						
+					</form>
+
+				</div>
 
 				<!-- Content -->
 				<div id="content" class="12u skel-cell-important">
@@ -70,41 +141,41 @@
 						<p>Pellentesque pede. Donec pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis. Vestibulum sem magna, elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed blandit. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In hac habitasse platea dictumst. Nullam id ante eget dui vulputate aliquam. Pellentesque erat erat, tincidunt in, eleifend accumsan, malesuada eget, augue. Suspendisse sit amet tellus in eros bibendum condimentum. Vestibulum suscipit volutpat nulla. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
 						<p>Vestibulum sem magna, elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed blandit. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In hac habitasse platea dictumst. Nullam id ante eget dui vulputate aliquam. Pellentesque erat erat, tincidunt in, eleifend accumsan, malesuada eget, augue. Suspendisse sit amet tellus in eros bibendum condimentum. Vestibulum suscipit volutpat nulla. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Pellentesque pede. Donec pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis.</p>
 					</section>
-					<div class = "content">
-						<h2>Order</h2>
-						<form>
-							<div class="form-group">    
-								<div class="col">
-									<label for="exampleInputPassword1">order name :</label>
-									<input type="text" class="form-control" placeholder="First name">
-								</div>
-							</div>
-							<div class="col-auto my-1">
-								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Quantity :</label>
-								<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-									<option selected>Choose...</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
-							</div>
-							<div class="col">
-								<label for="exampleInputPassword1">Address :</label>
-								<input type="text" class="form-control" placeholder="Address">
-							</div>
-							<div class="col">
-								<label for="exampleInputPassword1">Phone number :</label>
-								<input type="text" class="form-control" placeholder="Phone number">
-							</div>
 
-							<button onclick="hey()" type="button" class="btn btn-primary">Check out</button>
-						</form>
-
-					</div>
 				</div>
 
 			</div>
 		</div>
+
+		<table class="table table-bordered" id= "orderlist">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Option</th>
+					<th scope="col">Address</th>
+					<th scope="col">Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td colspan="2">Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<!-- Footer -->
