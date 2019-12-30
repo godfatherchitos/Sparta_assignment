@@ -34,9 +34,9 @@ def say_hello(**payload):
             )
     elif 'search' in chat:
         status = [chat.split(",")[1:]]
-        print(status)# 만약 chat에 안녕이라는 단어가 포함돼있으면
+        print(status)
         payment = search(status)
-        web_client.chat_postMessage(        # 답을 한다
+        web_client.chat_postMessage(
             channel=channel_id,
             text= payment,
             attachments=attachments
@@ -44,7 +44,7 @@ def say_hello(**payload):
     elif 'send' in chat:
         info = [chat.split(",")[1:]]
         print(info)
-        web_client.chat_postMessage(  # 답을 한다
+        web_client.chat_postMessage(
             channel=channel_id,
             text="Will request malltail to ship it out",
             attachments=attachments
