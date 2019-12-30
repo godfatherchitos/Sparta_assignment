@@ -140,7 +140,6 @@ def read3():
 print("start")
 if __name__ == '__main__':
     print("init started")
-    slack_token = "xoxb-2497510613-856432701953-VL3J4B6NlkyeSgogWsJf72Aa"
     slack_token = "Slacktoken"
     rtm_client = slack.RTMClient(token=slack_token)
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
